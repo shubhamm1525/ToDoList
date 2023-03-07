@@ -3,7 +3,7 @@
         <lightning-button-icon slot="actions" variant="base" size="xx-small" icon-name="utility:sync" alternative-text="sync"></lightning-button-icon>
 
         <lightning-layout>
-            <lightning-layout-item padding="around-small" >
+            <lightning-layout-item padding="around-small" size="12" >
                 <ul class="slds-has-dividers_around-space">
                     <li class="slds-item" >
                         <lightning-layout horizontal-align="spread" vertical-align="center" >
@@ -50,8 +50,14 @@
         </lightning-layout>
         
         <p slot="footer">
-            <lightning-input type="text" variant="label-hidden" label="Enter some text"></lightning-input>
-            <lightning-button variant="brand" label="Add" title="Save" onclick={handleSave}></lightning-button>
+            <lightning-layout pull-to-boundary="medium" >
+                <lightning-layout-item flexibility="grow" padding="horizontal-small" >
+                    <lightning-input type="text" variant="label-hidden" label="Enter some text"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="horizontal-small" >
+                    <lightning-button variant="brand" label="Add" title="Save" onclick={handleSave}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>  
         </p> 
         
     </lightning-card>
