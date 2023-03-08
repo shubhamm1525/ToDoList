@@ -12,6 +12,7 @@ Lightning Tags :
 5) lightning-button
 6) template-forEach
 
+
 This is a simple app where you can add task by insertig Task name and adding the taks by clicking the Add button.
 
 You can also delete the task by clicking delete button icon.
