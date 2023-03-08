@@ -1,18 +1,19 @@
-# Salesforce DX Project: Next Steps
+Hello Guys,
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This is a simple ToDoTask application created using Salesforce Lightning Web Components Framework.
 
-## How Do You Plan to Deploy Your Changes?
+In this ToDoTask app , I have used below LWC tags.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Lightning Tags :
+1) Lightning-card
+2) lightning-layout
+3) lightning-layout-item
+4) lightning-button-icon
+5) lightning-button
+6) template-forEach
 
-## Configure Your Salesforce DX Project
+This is a simple app where you can add task by insertig Task name and adding the taks by clicking the Add button.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+You can also delete the task by clicking delete button icon.
+for deleting records i have used javascript filter method.
 
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
