@@ -1,23 +1,24 @@
 public with sharing class ToDoListController {
 
+    /*
+    * Method to fetch Task records on component load for current Logged in user as Task Owner
+    */
     @AuraEnabled(cacheable=true)
     public static List<Task> getTasks(){
         try {
-
-            List<Task> tasksList = [SELECT Id,Subject 
-                                FROM Task 
-                                WHERE OwnerId=:UserInfo.getUserId()
-                                ];
+            List<Task> tasksList = [SELECT Id,Subject FROM Task WHERE OwnerId=:UserInfo.getUserId()];
             return tasksList;
-            
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
     }
 
+    /*
+    * Method to Insert Task record
+    * subject will be passed from UI to JS to Apex
+    */
     @AuraEnabled
-    private static Task insertTask(String subject) {
-
+    public static Task insertTask(String subject) {
         try {
             Task task = new Task();
             task.Subject = subject;
@@ -32,8 +33,11 @@ public with sharing class ToDoListController {
         return null;
     }
 
+    /*
+    * Method to Delete Task record based on recordId
+    */
     @AuraEnabled
-    private static Boolean deleteTask(Id recordId) {  
+    public static Boolean deleteTask(Id recordId) {  
         try {
             Database.delete(recordId);
             return true;  
