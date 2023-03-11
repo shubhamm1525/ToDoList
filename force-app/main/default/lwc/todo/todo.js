@@ -30,11 +30,23 @@ export default class Todo extends LightningElement {
         let todoTasks =  this.todoTasks;
         let indexToDelete;
 
-        for(var i = 0; i < todoTasks.length; i++ ){
-            if(idToDelete == todoTasks[i].id){
-                indexToDelete = i;
-            }
-        }
-        this.todoTasks.splice(indexToDelete,1);        
+        /* Basic looping method to loop through todotasks items and 
+        comparing the Id of todoTask iteam with selected Task from UI */
+        // for(var i = 0; i < todoTasks.length; i++ ){
+        //     if(idToDelete == todoTasks[i].id){
+        //         indexToDelete = i;
+        //     }
+        // }
+        //this.todoTasks.splice(indexToDelete,1);  
+
+        // splice method with findIndex method to find the index 
+        // remove single element from list
+        // todoTasks.splice(todoTasks.findIndex((todoTask)=> {
+        //     return todoTask.id === indexToDelete;
+        // }),1);
+
+        todoTasks.splice(todoTasks.findIndex(item => idToDelete === item.id),1);
+
+              
     }
 }
