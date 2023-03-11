@@ -1,22 +1,26 @@
-import { LightningElement,track } from 'lwc';
+import { LightningElement,track,wire } from 'lwc';
+import { refreshApex } from '@salesforce/apex';
+import getTasks from '@salesforce/apex/ToDoListController.getTasks';
 
 export default class Todo extends LightningElement {
     @track newTask;
+    error;
+    toDoTasksResponse;
     
     @track
-    todoTasks = [
-    ];
+    todoTasks = [];
 
     updateNewTask(event){
         this.newTask = event.target.value;
     }
 
+    /* Method to add task to List */
     addTaskToList(event) {
         console.log(this.newTask);
         if(this.newTask){        
             this.todoTasks.push({
-                id: this.todoTasks.length + 1,
-                name : this.newTask
+                Id: this.todoTasks.length + 1,
+                Subject : this.newTask,
             });
             this.newTask = '';
         }
@@ -48,5 +52,31 @@ export default class Todo extends LightningElement {
         todoTasks.splice(todoTasks.findIndex(item => idToDelete === item.id),1);
 
               
+    }
+
+    @wire(getTasks)
+    wiredtodoTasks(response){
+        
+        this.toDoTasksResponse = response;
+        let data  = response.data;
+        let error = response.error;
+
+        if(data){
+            this.todoTasks = [];
+            data.forEach(task => {
+                this.todoTasks.push({
+                    Id: this.todoTasks.length + 1,
+                    Subject: task.Subject,
+                    recordId: task.Id
+                });
+            });
+            console.log( JSON.stringify(this.todoTasks));
+        }else if(error){
+            console.log(error);
+        }
+    }
+
+    refreshTodoList(){
+        refreshApex(this.toDoTasksResponse);
     }
 }
