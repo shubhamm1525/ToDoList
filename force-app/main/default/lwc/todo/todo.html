@@ -4,6 +4,11 @@
 
         <lightning-layout>
             <lightning-layout-item padding="around-small" size="12" >
+
+                <template if:true={processing}>
+                    <lightning-spinner alternative-text="loading" variant="brand" size="small"> </lightning-spinner>
+                </template>
+
                 <ul class="slds-has-dividers_around-space">
                     <template if:true={todoTasks}>
                         <template for:each={todoTasks} for:item="todoTask" >
@@ -32,7 +37,15 @@
         <p slot="footer">
             <lightning-layout pull-to-boundary="medium" >
                 <lightning-layout-item flexibility="grow" padding="horizontal-small" >
-                    <lightning-input type="text" value={newTask} onchange={updateNewTask} variant="label-hIdden" label="Enter some text"></lightning-input>
+                    <lightning-input 
+                        type="text" 
+                        value={newTask} 
+                        onchange={updateNewTask} 
+                        variant="label-hIdden" 
+                        label="Enter some text"
+                        autocomplete="off"
+                        required="true">
+                    </lightning-input>
                 </lightning-layout-item>
                 <lightning-layout-item padding="horizontal-small" >
                     <lightning-button variant="brand" label="Add" title="Save" onclick={addTaskToList}></lightning-button>
