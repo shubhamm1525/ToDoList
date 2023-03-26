@@ -16,7 +16,8 @@ Lightning Tags :
 6) template-forEach
 
 
-This is a simple app where you can add task by insertig Task name and adding the taks by clicking the Add button.
+This is a simple app for tracking your day to day to do list.
+I have used standard task object for storing the task.
 
 You can also delete the task by clicking delete button icon.
 for deleting records i have used javascript filter method.
