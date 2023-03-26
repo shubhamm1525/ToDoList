@@ -31,10 +31,12 @@ export default class Todo extends LightningElement {
             this.processing = false;
                 if(this.newTask){        
                     this.todoTasks.push({
-                        Id: this.todoTasks.length + 1,
+                        //Id : last records Id from taskList array and adding 1  
+                        Id: this.todoTasks[this.todoTasks.length - 1] ? this.todoTasks[this.todoTasks.length - 1].Id + 1 : 0,
                         Subject : this.newTask,
                         recordId : result.Id
                     });
+                    console.log(JSON.stringify(this.todoTasks));
                     this.newTask = '';
                 }
             }
@@ -73,6 +75,7 @@ export default class Todo extends LightningElement {
             if(result){
                 todoTasks.splice(indexToDelete,1);    
                 console.log(result);
+                console.log(JSON.stringify(this.todoTasks));
             }else{
                 console.log("Unable to delete task");
             }
